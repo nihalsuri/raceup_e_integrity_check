@@ -20,6 +20,11 @@ Optional recruitement task for software department at RaceUP-e
 
 
 ## Recommendations to the main task
+- Clear decleration in the task of the version of MinGW to be consumed, and link provided to the setup tool as well with the guide
+- Wrong command mentioned in the guide for version check, can be mentioned in future recruitment tasks, if ever required again. 
+![guide1](images/guide_incorrect.png)
+![guide2](images/guide_prood.png)
+
 
 
 ## Future Improvements
