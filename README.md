@@ -1,4 +1,4 @@
-# Formula Student-RaceUP-E recruitment task 
+# Formula Student-RaceUP-E Recruitment Task 
 Optional recruitement task for software department at RaceUP-e 
 
 ## Rules 
