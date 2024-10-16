@@ -1,9 +1,15 @@
 #include "./integrity_check_db.h"
 #include "stdio.h"
-// #include "windows.h"
+#include "time.h"
 
 // Function to check and log integrity conditions
 void check_and_log(FILE *file) {
+    // Get current time 
+    time_t t = time(NULL);
+
+    // Convert to local time and store in struct tm
+    struct tm *currentTime = localtime(&t);
+
     // Open the log file
     file = fopen("integrity_log.json", "w");
     if (file == NULL) {
@@ -12,7 +18,6 @@ void check_and_log(FILE *file) {
     }
 
     // Start the JSON object 
-    fprintf(file, "{\n");
     fprintf(file, "{\n \"integrity_checks\": [\n");
     // Integrity check loop
     while (1) {
@@ -21,6 +26,12 @@ void check_and_log(FILE *file) {
         
         // A new JSON object per iteration 
         fprintf(file, "  {\n");
+
+        // Add timestamp 
+        fprintf(file, "     \"timestamp\": \"%02d/%02d/%04d %02d:%02d:%02d\", \n", 
+            currentTime->tm_mday, currentTime->tm_mon + 1, 
+            currentTime->tm_year + 1900, currentTime->tm_hour, 
+            currentTime->tm_min, currentTime->tm_sec);
 
         // THROTTLE (gas) check
         fprintf(file, "      \"gas\": \"%s\",\n", (gas >= 0 && gas <= 100 && !(brk1 > 50 && gas >= 20)) ? "OK" : "ERROR");
@@ -81,8 +92,6 @@ void check_and_log(FILE *file) {
         // Flush the file to ensure data is written out
         fflush(file);
         
-        // You might want to introduce a sleep period to avoid excessive logging
-        // Sleep(1); // Uncomment if you want to add a delay
 
     }
 
