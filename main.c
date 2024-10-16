@@ -4,11 +4,10 @@
 
 // Function to check and log integrity conditions
 void check_and_log(FILE *file) {
-    // Get current time 
-    time_t t = time(NULL);
-
-    // Convert to local time and store in struct tm
-    struct tm *currentTime = localtime(&t);
+    
+    // Set current time variables 
+    time_t t;
+    struct tm *currentTime;
 
     // Open the log file
     file = fopen("integrity_log.json", "w");
@@ -21,6 +20,10 @@ void check_and_log(FILE *file) {
     fprintf(file, "{\n \"integrity_checks\": [\n");
     // Integrity check loop
     while (1) {
+        //Get current time for each iteration 
+        t = time(NULL);
+        currentTime = localtime(&t);
+
         // Check if we need to close the previous JSON object 
         long file_position = ftell(file);  // Get the current position in the file
         
@@ -60,13 +63,13 @@ void check_and_log(FILE *file) {
         // VOLTAGE LEVELS (voltage_level[8]): Every value must be over 10
         int voltage_ok = 1;
         for (int i = 0; i < 8; i++) {
-            if (voltage_level[i] <= 10) {
+            if (voltage_level[i] < 10) {
                 voltage_ok = 0;
                 break;
             }
         }
 
-        fprintf(file, "      \"motor_pos\": \"%s\",\n", (motor_pos_all_positive || motor_pos_all_negative) ? "OK" : "ERROR");
+        fprintf(file, "      \"voltage_level\": \"%s\",\n", (voltage_ok) ? "OK" : "ERROR");
 
 
         // GENERIC SENSORS (sensors[13]): Payload < 120, size > 10, and spec > 10 for each sensor
