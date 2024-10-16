@@ -17,7 +17,8 @@ Optional recruitement task for software department at RaceUP-e
 
 
 ## Design Decisions 
-- Log the unit test case results with the timestamp to a file following an easy and portable JSON structure
+- Log the integrity test case results with the timestamp to the file as well
+- Followed an easy, portable JSON structure, txt file readability is quite poor and not of much use
 - Mature batch file usage for easy debugging purposes -> Prompt user if a compiler is available or not for the program to run
 
 
