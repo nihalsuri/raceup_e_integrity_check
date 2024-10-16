@@ -1,15 +1,16 @@
 @echo off
-REM Compiling the C program
-gcc main.c -o main.exe
+rem This script compiles main.c and integrity_check_db.c into an executable
 
-REM Check if the compilation succeeded
+rem Compile the program
+gcc -o integrity_checker main.c integrity_check_db.c
+
+rem Check if compilation succeeded
 if %errorlevel% neq 0 (
-    echo Compilation failed.
+    echo Compilation failed. Make sure gcc is installed and added to the PATH.
     pause
-    exit /b %errorlevel%
+    exit /b
 )
 
-REM Running the program
-main.exe
-
+echo Compilation successful! The executable integrity_checker.exe has been created.
 pause
+
