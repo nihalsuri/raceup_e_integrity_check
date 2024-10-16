@@ -8,16 +8,17 @@ Optional recruitement task for software department at RaceUP-e
 * NO OTHER EXTERNAL LIBRARIES ALLOWED
 
 ## Getting Started
-- 
+- Clone the repository and run the **integrity_check.bat** batch file, and then finally proceed with the executable (this is only valid for Windows 11 machines)
+ ``` 
+ git clone https://github.com/nihalsuri/raceup-e_integrity_check.git
+ integrity_check.bat
+ integrity_check.exe
 
-## Functionality & Debugging
-
-
-
-
+``` 
+This will output our file, **integrity_log.json**, as we desired. 
 
 ## Design Decisions 
-- Log the integrity test case results with the timestamp to the file as well
+- Log the integrity test case results with the timestamp to the file as well, only place where **EXTERNAL LIBRARY** has been used
 - Followed an easy, portable JSON structure, txt file readability is quite poor and not of much use
 - Mature batch file usage for easy debugging purposes -> Prompt user if a compiler is available or not for the program to run
 
@@ -30,6 +31,7 @@ Optional recruitement task for software department at RaceUP-e
 
 
 ## Future Improvements
-- Usage of MakeFile when this unit testing library grows and multiple object files are required 
+- Usage of MakeFile when this testing library grows and multiple object files are required 
 - Thread locking mechanisms can be added like mutexes, currently its not a major concern as the size of our project is quite limited, but if we would like to develop on the same and grow it, then the program can be structured in such a way
 - Stronger and more restricted unit testing approach can be applied if more requirements are defined, a framework such as [CUnit](https://cunit.sourceforge.net/) can maybe be consumed
+- If time permitted I would try and seperate the strucute of the code a bit more and not have it in such a monolithic pattern, but as far as the current requirements are concerned this is sufficient
