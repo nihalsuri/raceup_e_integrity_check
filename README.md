@@ -21,7 +21,7 @@ This will output our file, **integrity_log.json**, as we desired.
 - Log the integrity test case results with the timestamp to the file as well, only place where **EXTERNAL LIBRARY** has been used
 - Followed an easy, portable JSON structure, txt file readability is quite poor and not of much use
 - Mature batch file usage for easy debugging purposes -> Prompt user if a compiler is available or not for the program to run
-
+- usage of the efficient and effective version control practices, required for any large scale development
 
 ## Recommendations to the main task
 - Clear decleration in the task of the version of MinGW to be consumed, and link provided to the setup tool as well with the guide
